@@ -5,8 +5,8 @@ interface buttonProps {
   size: "sm" | "lg" | "md";
   text: string;
   startIcon: ReactElement;
-  endIcon: ReactElement;
-  onClick: () => void;
+  endIcon?: ReactElement;
+  onClick?: () => void;
 }
 
 const variantstyle = {
@@ -15,19 +15,23 @@ const variantstyle = {
 };
 
 const sizeStyle = {
-  sm: "py-1 px-2",
-  md: "py-1 px-2",
-  lg: "py-1 px-2",
+  sm: "w-28 h-8 p-1",
+  md: "w-29 h-9 p-1.5",
+  lg: "w-30 h-10 p-2",
 };
+
+const defaultStyle = "rounded-md flex justify-evenly";
 
 export const Button = (props: buttonProps) => {
   return (
     <button
-      className={`${variantstyle[props.variant]} ${sizeStyle[props.size]}`}
+      className={`${variantstyle[props.variant]} ${
+        sizeStyle[props.size]
+      } ${defaultStyle}`}
     >
-      {props.startIcon}
-      {props.text}
-      {props.endIcon}
+      <div>{props.startIcon}</div>
+      <div>{props.text}</div>
+      <div>{props.endIcon}</div>
     </button>
   );
 };
