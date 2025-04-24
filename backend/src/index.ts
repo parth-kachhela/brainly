@@ -3,10 +3,11 @@ const app = express();
 import mongoose from "mongoose";
 import jwt from "jsonwebtoken";
 import bycrypt from "bcrypt";
-import { contenModel, UserModel } from "./db";
+import { contenModel, linkModel, UserModel } from "./db";
 import { userMiddleware } from "./middleware";
 app.use(express.json());
 import { JWT_PASSWORD } from "./config";
+import { random } from "./utils";
 //cpnnet with mongo db
 mongoose
   .connect("mongodb://127.0.0.1:27017/brain")
@@ -129,7 +130,24 @@ app.delete("/api/v1/content", userMiddleware, async (req, res) => {
 });
 
 //foe share a link
-app.post("/api/v1/brain/share", (req, res) => {});
+app.post("/api/v1/brain/share", userMiddleware, async (req, res) => {
+  const share = req.body.share;
+  if (share) {
+    await linkModel.create({
+      //@ts-ignore
+      userId: req.userId,
+      hash: random(10),
+    });
+  } else {
+    await linkModel.deleteOne({
+      //@ts-ignore
+      userId: req.userId,
+    });
+  }
+  res.status(200).json({
+    Message: "like share",
+  });
+});
 
 //for fetch another user share link
 app.get("/api/v1/brain/:shareLink", (req, res) => {});
