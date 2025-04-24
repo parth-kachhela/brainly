@@ -10,19 +10,19 @@ function App() {
           variant="primary"
           text="share"
           size="sm"
-          startIcon={<PlusIcon />}
+          startIcon={<PlusIcon size="sm" />}
         ></Button>
         <Button
           variant="primary"
           text="share"
           size="md"
-          startIcon={<PlusIcon />}
+          startIcon={<PlusIcon size="md" />}
         ></Button>
         <Button
           variant="secondrey"
           text="share"
           size="lg"
-          startIcon={<PlusIcon />}
+          startIcon={<PlusIcon size="lg" />}
         ></Button>
       </div>
     </>

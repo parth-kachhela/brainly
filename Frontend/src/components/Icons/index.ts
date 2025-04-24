@@ -3,7 +3,7 @@ export interface Iconprop {
 }
 
 export const sizeStyle = {
-  sm: "size-2",
-  md: "size-4",
-  lg: "size-6",
+  sm: "size-5",
+  md: "size-6",
+  lg: "size-7",
 };

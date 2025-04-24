@@ -1,4 +1,6 @@
-export const PlusIcon = () => {
+import { Iconprop, sizeStyle } from ".";
+
+export const PlusIcon = (props: Iconprop) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -6,7 +8,7 @@ export const PlusIcon = () => {
       viewBox="0 0 24 24"
       stroke-width="1.5"
       stroke="currentColor"
-      className="size-6"
+      className={sizeStyle[props.size]}
     >
       <path
         stroke-linecap="round"
