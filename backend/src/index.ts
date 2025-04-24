@@ -133,7 +133,7 @@ app.delete("/api/v1/content", userMiddleware, async (req, res) => {
 app.post("/api/v1/brain/share", userMiddleware, async (req, res) => {
   const share = req.body.share;
   if (share) {
-    await linkModel.create({
+    const ans = await linkModel.create({
       //@ts-ignore
       userId: req.userId,
       hash: random(10),
