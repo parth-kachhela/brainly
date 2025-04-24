@@ -2,7 +2,7 @@ import express from "express";
 const app = express();
 import mongoose from "mongoose";
 import jwt from "jsonwebtoken";
-import bycrypt from "bcrypt";
+import bycrypt, { hash } from "bcrypt";
 import { contenModel, linkModel, UserModel } from "./db";
 import { userMiddleware } from "./middleware";
 app.use(express.json());
@@ -133,20 +133,35 @@ app.delete("/api/v1/content", userMiddleware, async (req, res) => {
 app.post("/api/v1/brain/share", userMiddleware, async (req, res) => {
   const share = req.body.share;
   if (share) {
+    const existingLink = await linkModel.findOne({
+      //@ts-ignore
+      userId: req.userId,
+    });
+    if (existingLink) {
+      res.status(411).json({
+        Message: "user already exist",
+      });
+      return;
+    }
+    let hash = random(10);
     const ans = await linkModel.create({
       //@ts-ignore
       userId: req.userId,
-      hash: random(10),
+      hash: hash,
+    });
+    res.status(200).json({
+      Message: "like is" + hash,
     });
   } else {
-    await linkModel.deleteOne({
+    let ans = await linkModel.deleteMany({
       //@ts-ignore
       userId: req.userId,
     });
+    res.status(200).json({
+      Message: "like removed",
+      ans: ans,
+    });
   }
-  res.status(200).json({
-    Message: "like share",
-  });
 });
 
 //for fetch another user share link
