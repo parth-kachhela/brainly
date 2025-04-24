@@ -150,7 +150,7 @@ app.post("/api/v1/brain/share", userMiddleware, async (req, res) => {
       hash: hash,
     });
     res.status(200).json({
-      Message: "like is" + hash,
+      Message: ans.hash,
     });
   } else {
     let ans = await linkModel.deleteMany({
@@ -167,9 +167,11 @@ app.post("/api/v1/brain/share", userMiddleware, async (req, res) => {
 //for fetch another user share link
 app.get("/api/v1/brain/:shareLink", async (req, res) => {
   const hash = req.params.shareLink;
+  console.log(hash);
   const link = await linkModel.findOne({
     hash: hash,
   });
+  console.log(link);
   if (!link) {
     res.status(411).json({
       Message: "incorrect input",
