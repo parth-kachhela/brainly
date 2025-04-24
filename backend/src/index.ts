@@ -165,7 +165,35 @@ app.post("/api/v1/brain/share", userMiddleware, async (req, res) => {
 });
 
 //for fetch another user share link
-app.get("/api/v1/brain/:shareLink", (req, res) => {});
+app.get("/api/v1/brain/:shareLink", async (req, res) => {
+  const hash = req.params.shareLink;
+  const link = await linkModel.findOne({
+    hash: hash,
+  });
+  if (!link) {
+    res.status(411).json({
+      Message: "incorrect input",
+    });
+  }
+
+  const content = await contenModel.find({
+    userId: link?.userId,
+  });
+
+  const user = await UserModel.findOne({
+    _id: link?.userId,
+  });
+
+  if (!user) {
+    res.status(411).json({
+      Message: "it can not idele happends...!",
+    });
+  }
+  res.status(200).json({
+    username: user?.username,
+    content: content,
+  });
+});
 
 app.listen(8080, () => {
   console.log("app is listen..!");
