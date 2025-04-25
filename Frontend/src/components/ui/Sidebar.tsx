@@ -7,7 +7,7 @@ export const Sidebar = () => {
   return (
     <div className="h-screen bg-white border-r w-76 fixed left-0 top-0 ">
       <div className="flex text-2xl pt-4 items-center">
-        <div className="pr-2 text-purple-400">
+        <div className="pr-4 pl-4 text-purple-400">
           <LogoIcon />
         </div>
         Brainly
