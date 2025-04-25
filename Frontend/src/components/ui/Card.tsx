@@ -7,7 +7,7 @@ interface CardProps {
 
 export const Card = ({ title, link, type }: CardProps) => {
   return (
-    <div className="w-full max-w-md p-5 bg-white rounded-2xl shadow-lg border border-gray-100 transition hover:shadow-xl">
+    <div className="w-full max-w-xs p-5 bg-white rounded-2xl shadow-lg border border-gray-100 transition hover:shadow-xl">
       <div className="flex justify-between items-start mb-4">
         <div className="flex items-center gap-3 text-lg font-semibold text-gray-800">
           <div className="w-5 h-5 text-gray-500">
@@ -48,7 +48,7 @@ export const Card = ({ title, link, type }: CardProps) => {
       )}
 
       {type === "twitter" && (
-        <blockquote className="twitter-tweet mt-4">
+        <blockquote className="twitter-tweet mt-2">
           <a href={link}></a>
         </blockquote>
       )}

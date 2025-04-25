@@ -10,11 +10,11 @@ import { Sidebar } from "./components/ui/Sidebar";
 function App() {
   const [modalOpen, setModalOpen] = useState(false);
   return (
-    <div>
+    <div className="">
       <div className="">
         <Sidebar />
       </div>
-      <div className="p-4">
+      <div className="ml-74 p-4 min-h-screen bg-gray-100 border-2">
         <CreateContentModal
           open={modalOpen}
           onClose={() => {
