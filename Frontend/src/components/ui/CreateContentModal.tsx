@@ -28,7 +28,12 @@ export function CreateContentModal({ open, onClose }: CreateContentModalProps) {
                 <Input placeholder={"Link"} />
               </div>
               <div className="flex justify-center">
-                <Button variant="primary" size="lg" text="submit" />
+                <Button
+                  variant="primary"
+                  size="lg"
+                  text="submit"
+                  loding={true}
+                />
               </div>
             </span>
           </div>
@@ -47,7 +52,7 @@ export function Input({ onChange, placeholder }: input) {
     <div>
       <input
         type={"text"}
-        className="px-4 py-2"
+        className="px-4 py-2 bg-slate-100 rounded m-2 w-sm"
         placeholder={placeholder}
         onChange={onChange}
       ></input>

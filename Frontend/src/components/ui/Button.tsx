@@ -7,6 +7,7 @@ interface buttonProps {
   startIcon?: ReactElement;
   endIcon?: ReactElement;
   onClick?: () => void;
+  loding?: boolean;
 }
 
 const variantstyle = {
@@ -28,7 +29,9 @@ export const Button = (props: buttonProps) => {
       onClick={props.onClick}
       className={`${variantstyle[props.variant]} ${
         sizeStyle[props.size]
-      } ${defaultStyle} cursor-pointer`}
+      } ${defaultStyle} cursor-pointer ${
+        props.loding && " opacity-40 disabled"
+      }`}
     >
       <div>{props.startIcon}</div>
       <div>{props.text}</div>
