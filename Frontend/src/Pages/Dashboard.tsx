@@ -39,13 +39,13 @@ export function Dashboard() {
         </div>
         <div className="flex gap-4">
           <Card
-            title="you tube"
-            link="https://www..youtube..com/embed/Uc2q5m2Z5T8?si=fJkgDzlAb6WpINrr"
+            title="youtube"
+            link="https://www.youtube.com/embed/RQbnPl5E5No?si=r3HILKYoHZj6S0Us"
             type="youtube"
           />
           <Card
             title="twitter"
-            link="https://twitter..com/SpaceX/status/1732824684683784516?ref_src=twsrc%5Etfw"
+            link="https://twitter.com/HumansNoContext/status/1915360347965247632"
             type="twitter"
           ></Card>
         </div>
