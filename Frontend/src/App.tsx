@@ -5,11 +5,15 @@ import { ShareIcon } from "./components/Icons/ShareIcon";
 import { Button } from "./components/ui/Button";
 import { Card } from "./components/ui/Card";
 import { CreateContentModal } from "./components/ui/CreateContentModal";
+import { Sidebar } from "./components/ui/Sidebar";
 
 function App() {
   const [modalOpen, setModalOpen] = useState(false);
   return (
     <>
+      <div className="">
+        <Sidebar />
+      </div>
       <div className="p-4">
         <CreateContentModal
           open={modalOpen}
