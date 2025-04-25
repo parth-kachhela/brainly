@@ -1,13 +1,15 @@
 import express from "express";
-const app = express();
 import mongoose from "mongoose";
 import jwt from "jsonwebtoken";
+import cors from "cors";
 import bycrypt, { hash } from "bcrypt";
 import { contenModel, linkModel, UserModel } from "./db";
 import { userMiddleware } from "./middleware";
-app.use(express.json());
 import { JWT_PASSWORD } from "./config";
 import { random } from "./utils";
+const app = express();
+app.use(cors());
+app.use(express.json());
 //cpnnet with mongo db
 mongoose
   .connect("mongodb://127.0.0.1:27017/brain")
@@ -28,6 +30,7 @@ app.post("/api/v1/signup", async (req, res) => {
     res.status(403).json({
       error: "user already exist",
     });
+    return;
   }
 
   const user = await UserModel.create({
