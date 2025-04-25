@@ -12,7 +12,7 @@ export const Sidebar = () => {
         </div>
         Brainly
       </div>
-      <div className="mt-10 ml-4 flex flex-col gap-2 cursor-pointer">
+      <div className="mt-10 ml-4 flex flex-col gap-2 ">
         <SidebarItem text="Twitter" icon={<TwitterIcon />} />
         <SidebarItem text="Youtube" icon={<YoutubeIcon />} />
       </div>
