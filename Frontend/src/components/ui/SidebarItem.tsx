@@ -9,7 +9,8 @@ export function SidebarItem({
 }) {
   return (
     <div className="flex">
-      {icon} {text}
+      <div className="p-2">{icon}</div>
+      <div className="p-2"> {text}</div>
     </div>
   );
 }
