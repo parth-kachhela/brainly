@@ -1,6 +1,8 @@
 import { useRef, useState } from "react";
 import { CrossIcon } from "../Icons/CrossIcon";
 import { Button } from "./Button";
+import { BACKEND_URL } from "../../config";
+import axios from "axios";
 
 enum contentTpye {
   Youtube = "youtube",
@@ -17,8 +19,24 @@ export function CreateContentModal({ open, onClose }: CreateContentModalProps) {
   //@ts-ignore
   const linkRef = useRef<HTMLInputElement>();
   const [type, setType] = useState("youtube");
-  function addContent() {
+  async function addContent() {
     const title = titleRef.current.value;
+    const link = linkRef.current.value;
+    console.log(title, link);
+    await axios.post(
+      BACKEND_URL + "/api/v1/content",
+      {
+        link,
+        title,
+        type,
+      },
+      {
+        headers: {
+          Authorization: localStorage.getItem("token"),
+        },
+      }
+    );
+    alert("sumbit");
   }
 
   return (
@@ -71,7 +89,6 @@ export function CreateContentModal({ open, onClose }: CreateContentModalProps) {
                 variant="primary"
                 size="lg"
                 text="Submit"
-                loding={true}
                 onClick={addContent}
               />
             </div>
