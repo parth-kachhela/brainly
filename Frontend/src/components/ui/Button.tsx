@@ -17,7 +17,7 @@ const variantstyle = {
 const sizeStyle = {
   sm: "w-28 h-8 p-1",
   md: "w-35 h-9 p-1.5",
-  lg: "w-40 h-10 p-2",
+  lg: "w-full h-10 p-2",
 };
 
 const defaultStyle = "rounded-md flex justify-between items-center";

@@ -1,10 +1,12 @@
 import "./App.css";
-import { Dashboard } from "./Pages/Dashboard";
+import { Signup } from "./components/ui/Auth";
+// import { Dashboard } from "./Pages/Dashboard";
 
 function App() {
   return (
     <>
-      <Dashboard />
+      <Signup />
+      {/* <Dashboard /> */}
     </>
   );
 }
