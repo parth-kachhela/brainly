@@ -20,7 +20,8 @@ mongoose
 
 //for signup
 app.post("/api/v1/signup", async (req, res) => {
-  const { username, password } = req.body;
+  const username = req.body.username;
+  const password = req.body.password;
   const hashpass = await bycrypt.hash(password, 10);
   const duplicateUser = await UserModel.findOne({ username: username });
   if (duplicateUser) {
