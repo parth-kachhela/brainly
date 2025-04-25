@@ -10,7 +10,7 @@ import { Sidebar } from "./components/ui/Sidebar";
 function App() {
   const [modalOpen, setModalOpen] = useState(false);
   return (
-    <>
+    <div>
       <div className="">
         <Sidebar />
       </div>
@@ -51,7 +51,7 @@ function App() {
           ></Card>
         </div>
       </div>
-    </>
+    </div>
   );
 }
 
