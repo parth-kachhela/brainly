@@ -30,7 +30,7 @@ export const Button = (props: buttonProps) => {
       className={`${variantstyle[props.variant]} ${
         sizeStyle[props.size]
       } ${defaultStyle} cursor-pointer ${
-        props.loding && " opacity-40 disabled"
+        props.loding ? " opacity-40 disabled" : ""
       }`}
     >
       <div>{props.startIcon}</div>

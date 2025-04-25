@@ -1,11 +1,12 @@
 import "./App.css";
-import { Signup } from "./components/ui/Auth";
+import { Signin, Signup } from "./components/ui/Auth";
 // import { Dashboard } from "./Pages/Dashboard";
 
 function App() {
   return (
     <>
-      <Signup />
+      <Signin />
+      {/* <Signup /> */}
       {/* <Dashboard /> */}
     </>
   );
