@@ -42,7 +42,7 @@ interface input {
   onChange?: () => void;
   placeholder?: string;
 }
-function Input({ onChange, placeholder }: input) {
+export function Input({ onChange, placeholder }: input) {
   return (
     <div>
       <input
