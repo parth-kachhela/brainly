@@ -8,7 +8,7 @@ export function SidebarItem({
   icon: ReactElement;
 }) {
   return (
-    <div className="flex">
+    <div className="flex cursor-pointer hover:shadow-sm">
       <div className="p-2">{icon}</div>
       <div className="p-2"> {text}</div>
     </div>
