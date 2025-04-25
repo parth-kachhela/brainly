@@ -1,41 +1,66 @@
+import { useState } from "react";
 import { CrossIcon } from "../Icons/CrossIcon";
 import { Button } from "./Button";
 
+enum contentTpye {
+  Youtube = "youtube",
+  Twitter = "twitter",
+}
 interface CreateContentModalProps {
   open: boolean;
   onClose: () => void;
 }
 
 export function CreateContentModal({ open, onClose }: CreateContentModalProps) {
+  const [type, setType] = useState("youtube");
   return (
     <div>
       {open && (
-        <div className="w-screen h-screen bg-slate-500 opacity-70 fixed top-0 left-0 flex justify-center ">
-          <div className="flex flex-col justify-center">
-            <span className="bg-white opacity-100 p-4 rounded">
-              <div className="flex justify-end">
-                <div
-                  onClick={() => {
-                    onClose();
-                  }}
-                  className="cursor-pointer"
-                >
-                  <CrossIcon />
-                </div>
+        <div className="fixed top-0 left-0 w-screen h-screen bg-slate-500/70 backdrop-blur-sm flex justify-center items-center z-50">
+          <div className="bg-white p-6 rounded-lg shadow-lg w-full max-w-md">
+            {/* Close Button */}
+            <div className="flex justify-end">
+              <div
+                onClick={() => {
+                  onClose();
+                }}
+                className="cursor-pointer"
+              >
+                <CrossIcon />
               </div>
-              <div>
-                <Input placeholder={"title"} />
-                <Input placeholder={"Link"} />
-              </div>
-              <div className="flex justify-center">
-                <Button
-                  variant="primary"
-                  size="lg"
-                  text="submit"
-                  loding={true}
-                />
-              </div>
-            </span>
+            </div>
+
+            {/* Inputs */}
+            <div className="mt-4 space-y-4">
+              <Input placeholder="Title" />
+              <Input placeholder="Link" />
+            </div>
+
+            {/* Types */}
+            <div className="flex gap-4 items-center mt-6">
+              <h1 className="whitespace-nowrap">Types:</h1>
+              <Button
+                size="sm"
+                text="YouTube"
+                variant={type === contentTpye.Youtube ? "primary" : "secondrey"}
+                onClick={() => {
+                  setType(contentTpye.Youtube);
+                }}
+              />
+              <Button
+                size="sm"
+                text="Twitter"
+                variant={type === contentTpye.Twitter ? "primary" : "secondrey"}
+                onClick={() => {
+                  setType(contentTpye.Twitter);
+                }}
+              />
+            </div>
+
+            {/* Submit Button */}
+            <div className="flex justify-center mt-6">
+              <Button variant="primary" size="lg" text="Submit" loding={true} />
+            </div>
           </div>
         </div>
       )}
