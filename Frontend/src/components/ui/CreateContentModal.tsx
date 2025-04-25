@@ -44,17 +44,17 @@ export function CreateContentModal({ open, onClose }: CreateContentModalProps) {
 }
 
 interface input {
-  onChange?: () => void;
+  ref?: any;
   placeholder?: string;
 }
-export function Input({ onChange, placeholder }: input) {
+export function Input({ ref, placeholder }: input) {
   return (
     <div>
       <input
         type={"text"}
         className="px-4 py-2 bg-slate-100 rounded m-2 w-sm"
         placeholder={placeholder}
-        onChange={onChange}
+        ref={ref}
       ></input>
     </div>
   );
