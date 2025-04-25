@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { CrossIcon } from "../Icons/CrossIcon";
 import { Button } from "./Button";
 
@@ -12,7 +12,15 @@ interface CreateContentModalProps {
 }
 
 export function CreateContentModal({ open, onClose }: CreateContentModalProps) {
+  //@ts-ignore
+  const titleRef = useRef<HTMLInputElement>();
+  //@ts-ignore
+  const linkRef = useRef<HTMLInputElement>();
   const [type, setType] = useState("youtube");
+  function addContent() {
+    const title = titleRef.current.value;
+  }
+
   return (
     <div>
       {open && (
@@ -32,8 +40,8 @@ export function CreateContentModal({ open, onClose }: CreateContentModalProps) {
 
             {/* Inputs */}
             <div className="mt-4 space-y-4">
-              <Input placeholder="Title" />
-              <Input placeholder="Link" />
+              <Input placeholder="Title" ref={titleRef} />
+              <Input placeholder="Link" ref={linkRef} />
             </div>
 
             {/* Types */}
@@ -59,7 +67,13 @@ export function CreateContentModal({ open, onClose }: CreateContentModalProps) {
 
             {/* Submit Button */}
             <div className="flex justify-center mt-6">
-              <Button variant="primary" size="lg" text="Submit" loding={true} />
+              <Button
+                variant="primary"
+                size="lg"
+                text="Submit"
+                loding={true}
+                onClick={addContent}
+              />
             </div>
           </div>
         </div>
