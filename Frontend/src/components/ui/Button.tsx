@@ -4,7 +4,7 @@ interface buttonProps {
   variant: "primary" | "secondrey";
   size: "sm" | "lg" | "md";
   text: string;
-  startIcon: ReactElement;
+  startIcon?: ReactElement;
   endIcon?: ReactElement;
   onClick?: () => void;
 }
@@ -25,9 +25,10 @@ const defaultStyle = "rounded-md flex justify-between items-center";
 export const Button = (props: buttonProps) => {
   return (
     <button
+      onClick={props.onClick}
       className={`${variantstyle[props.variant]} ${
         sizeStyle[props.size]
-      } ${defaultStyle}`}
+      } ${defaultStyle} cursor-pointer`}
     >
       <div>{props.startIcon}</div>
       <div>{props.text}</div>
