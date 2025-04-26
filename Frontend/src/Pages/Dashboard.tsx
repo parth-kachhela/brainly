@@ -5,9 +5,13 @@ import { Button } from "../components/ui/Button";
 import { Card } from "../components/ui/Card";
 import { CreateContentModal } from "../components/ui/CreateContentModal";
 import { Sidebar } from "../components/ui/Sidebar";
+import { useContent } from "../hooks/useContent";
+import axios from "axios";
+import { BACKEND_URL } from "../config";
 
 export function Dashboard() {
   const [modalOpen, setModalOpen] = useState(false);
+  const contents = useContent();
   return (
     <div className="">
       <div className="">
@@ -35,19 +39,26 @@ export function Dashboard() {
             text="Share Brain"
             size="md"
             startIcon={<ShareIcon />}
+            onClick={async () => {
+              const response = await axios.post(
+                BACKEND_URL + "/api/v1/brain/share",
+                {
+                  share: true,
+                },
+                {
+                  headers: {
+                    Authorization: localStorage.getItem("token"),
+                  },
+                }
+              );
+            }}
           ></Button>
         </div>
-        <div className="flex gap-4">
-          <Card
-            title="youtube"
-            link="https://www.youtube.com/embed/RQbnPl5E5No?si=r3HILKYoHZj6S0Us"
-            type="youtube"
-          />
-          <Card
-            title="twitter"
-            link="https://twitter.com/HumansNoContext/status/1915360347965247632"
-            type="twitter"
-          ></Card>
+        {/* {JSON.stringify(contents)} */}
+        <div className="flex gap-4 flex-wrap p-4">
+          {contents.map(({ type, link, title }) => (
+            <Card title={title} link={link} type={type} />
+          ))}
         </div>
       </div>
     </div>
