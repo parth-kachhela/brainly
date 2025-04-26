@@ -22,7 +22,6 @@ export function CreateContentModal({ open, onClose }: CreateContentModalProps) {
   async function addContent() {
     const title = titleRef.current.value;
     const link = linkRef.current.value;
-    console.log(title, link);
     await axios.post(
       BACKEND_URL + "/api/v1/content",
       {
@@ -36,7 +35,7 @@ export function CreateContentModal({ open, onClose }: CreateContentModalProps) {
         },
       }
     );
-    alert("sumbit");
+    onClose();
   }
 
   return (
