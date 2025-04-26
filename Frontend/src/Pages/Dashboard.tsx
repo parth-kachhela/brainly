@@ -7,7 +7,7 @@ import { CreateContentModal } from "../components/ui/CreateContentModal";
 import { Sidebar } from "../components/ui/Sidebar";
 import { useContent } from "../hooks/useContent";
 import axios from "axios";
-import { BACKEND_URL } from "../config";
+import { BACKEND_URL, FRONTEND_URL } from "../config";
 
 export function Dashboard() {
   const [modalOpen, setModalOpen] = useState(false);
@@ -51,6 +51,9 @@ export function Dashboard() {
                   },
                 }
               );
+              //@ts-ignore
+              const url = `${FRONTEND_URL}/share/${response.data.hash}`;
+              alert(url);
             }}
           ></Button>
         </div>
